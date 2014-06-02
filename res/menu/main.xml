@@ -1,0 +1,32 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/status"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="Status"/>
+    <item
+        android:id="@+id/setting"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="Setting"/>
+    <item
+        android:id="@+id/sensors"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="Sensors"/>
+    <item
+        android:id="@+id/binding"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="Bind/Unbind"/>
+    <item
+        android:id="@+id/error"
+        android:icon="@android:drawable/ic_menu_help"
+        android:title="Report Error"/>
+    <item
+        android:id="@+id/help"
+        android:icon="@android:drawable/ic_menu_help"
+        android:title="Help"/>
+    <item
+        android:id="@+id/quit"
+		android:icon="@android:drawable/ic_menu_close_clear_cancel"
+		android:title="Quit"/>
+
+</menu>

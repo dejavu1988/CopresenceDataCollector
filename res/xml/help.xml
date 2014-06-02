@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+
+    <PreferenceCategory
+            android:title="Application Info">
+            
+        <org.colocation.datacollector.MyPreference
+            android:key="ver_pref"
+            android:title="App Version"
+            android:summary=""
+            android:defaultValue="0" />
+        
+        <org.colocation.datacollector.MyPreference
+            android:key="id_pref"
+            android:title="Device ID"
+            android:summary=""
+            android:defaultValue="0" />
+        
+        <PreferenceScreen
+                android:title="Changelog"
+                android:summary="">
+
+            <intent android:action="android.intent.action.VIEW"
+                    android:data="http://colocation.minidns.net/dc/client/changelog.txt" />
+
+        </PreferenceScreen>
+        
+            
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+            android:title="Project Info">
+            
+        <PreferenceScreen
+                android:title="Wiki Instruction"
+                android:summary="@string/wiki">
+
+            <intent android:action="android.intent.action.VIEW"
+                    android:data="http://wiki.helsinki.fi/display/SecSys/ColocationDataCollector" />
+
+        </PreferenceScreen>
+        
+        <PreferenceScreen
+                android:title="Development Releases"
+                android:summary="@string/releasedir">
+
+            <intent android:action="android.intent.action.VIEW"
+                    android:data="http://colocation.minidns.net/dc/client/" />
+
+        </PreferenceScreen>
+        
+        <PreferenceScreen
+                android:title="Data Directory"
+                android:summary="@string/datadir">
+
+            <intent android:action="android.intent.action.VIEW"
+                    android:data="http://colocation.minidns.net/dc/data2/" />
+
+        </PreferenceScreen>        
+        
+        
+        <PreferenceScreen
+                android:title="Email to us"
+                android:summary="testuseratuh@gmail.com">
+
+            <intent android:action="android.intent.action.VIEW"
+                    android:data="mailto:testuseratuh@gmail.com" />
+
+        </PreferenceScreen>
+            
+    </PreferenceCategory>
+    
+</PreferenceScreen>

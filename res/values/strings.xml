@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Copresence Data Collector</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="partly">Partly</string>
+    <string name="options">Is your device to be near Device B for the next 30min?</string>
+    <string name="confirmoption">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="gtdistance">0</string>
+    <string name="askgt">And the actual distance is</string>
+    <string name="askblock">Don\'t prompt me for</string>
+    <string name="blocktime">1</string>
+    <string name="blockunit">hrs.</string>
+    <string name="gtdistanceunit">m.</string>
+    <string name="ask_button">Indicate Copresence</string>
+    <string name="widgetinfo1">Will this device be near</string>
+    <string name="widgetinfo2">during the coming 2 mins?</string>
+    <string name="bindname">Hien\'s Samsung Tab</string>
+    <string name="range1_button">&lt;20m</string>
+    <string name="range2_button">&lt;50m</string>
+    <string name="range3_button">&lt;100m</string>
+    <string name="range4_button">100m+</string>
+    <string name="initlayout"/>
+    <string name="a_button">YES</string>
+    <string name="b_button">20-100</string>
+    <string name="c_button">NO</string>
+    <string name="yes_button">Yes</string>
+    <string name="no_button">No</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="truthlayout"/>
+    <string name="set_button">Go to Setting</string>
+    <string name="remindinfo">You can temporarily disable the prompts.</string>
+    <string name="asklayout"/>
+    <string name="bind1">Is this the first device?</string>
+    <string name="bind2">This is your queue number:</string>
+    <string name="bind3">Please enter your queue number:</string>
+    <string name="bind4">Please register a customized name:</string>
+    <string name="unbind">Your device is bound to &quot;Hien's SAMSUNG TABLET&quot;. Unbind?</string>
+    <string name="bind0">Please register(bind) your device via server:</string>
+    <string name="wizard">Wizard:</string>
+    <string name="dname"/>
+    <string name="qnum"/>
+    <string name="repeating_scheduled">Repeating alarm will go off in 15 seconds and
+        every 15 seconds after based on the elapsed realtime clock</string>
+    <string name="repeating_unscheduled">Repeating alarm has been unscheduled</string>
+    <string name="repeating_received">The repeating alarm has gone off</string>
+    <string name="alarm_service_started">The alarm service has started running</string>
+    <string name="alarm_service_finished">The alarm service has finished running</string>
+    <string name="alarm_service_label">Data Collection Alarm Service</string>
+    <string name="foreground_service_started">Service is in the foreground</string>
+    <string name="foreground_service_label">Data Collection Daemon Service</string>
+    <string name="bind_name">Binding</string>
+    <string name="setting_name">Setting</string>
+    <string name="sensors_name">Sensors</string>
+    <string name="first_button">First</string>
+    <string name="second_button">Second</string>
+    <string name="bind_instruction_1">Please enter this number into your second device!</string>
+    <string name="bind_instruction_2">Enter the Queue Number from your first device:</string>
+    <string name="unbind_instruction">Your device is already bound.</string>
+    <string name="help_name">Help</string>
+    <string name="wiki">https://wiki.helsinki.fi/display/SecSys/ColocationDataCollector</string>
+    <string name="datadir">http://colocation.minidns.net/dc/data2/</string>
+    <string name="email">testuseratuh@gmail.com</string>
+    <string name="releasedir">http://colocation.minidns.net/dc/client/</string>
+    <string name="status_name">Status Monitor</string>
+    <string name="main_name">Indicate Copresence</string>
+
+</resources>

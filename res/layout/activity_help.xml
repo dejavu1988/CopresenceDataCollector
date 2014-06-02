@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+     
+    <TextView 
+        android:id="@+id/tv_ver"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="App Version"        
+        android:textColor="@color/ics_blue"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+    />
+
+    <TextView
+        android:id="@+id/ver"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/ics_blue" />
+    
+    <TextView 
+        android:id="@+id/tv_uuid"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Device ID"        
+        android:textColor="@color/ics_blue"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+    />
+    <TextView 
+        android:id="@+id/uuid"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text=""        
+        android:textColor="@color/ics_blue"
+    />
+    
+ 
+    
+    <TextView 
+        android:id="@+id/tv_wiki"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Wiki Instruction"        
+        android:textColor="@color/ics_blue"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+    />
+    <TextView 
+        android:id="@+id/wiki"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/wiki"        
+        android:textColor="@color/ics_blue"
+        android:autoLink="web"
+    />
+    
+    <TextView 
+        android:id="@+id/tv_data"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Data Directory"        
+        android:textColor="@color/ics_blue"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+    />
+    <TextView 
+        android:id="@+id/data"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/datadir"        
+        android:textColor="@color/ics_blue"
+        android:autoLink="web"
+    />
+    
+    <TextView 
+        android:id="@+id/tv_release"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Dev Releases"        
+        android:textColor="@color/ics_blue"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+    />
+    <TextView 
+        android:id="@+id/release"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/releasedir"        
+        android:textColor="@color/ics_blue"
+        android:autoLink="web"
+    />
+    
+    <TextView 
+        android:id="@+id/tv_email"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Email to us"        
+        android:textColor="@color/ics_blue"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+    />
+    <TextView 
+        android:id="@+id/email"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/email"        
+        android:textColor="@color/ics_blue"
+        android:autoLink="email"
+    />
+    </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

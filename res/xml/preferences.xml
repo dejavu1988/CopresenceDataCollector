@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2008 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!-- This is a primitive example showing the different types of preferences available. -->
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+            android:title="Indication Widget">
+            
+        <CheckBoxPreference
+                android:key="cbox_wid"
+                android:defaultValue="false"
+                android:title="Use Alternative Indication View from Notification Bar"
+                android:summary="In case indication widget is blocked on your device." />
+            
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+            android:title="Privacy Preference">
+            
+        <CheckBoxPreference
+                android:key="cbox_aud"
+                android:defaultValue="false"
+                android:title="Enable Audio Raw-data Storage on Server"
+                android:summary="" />
+            
+    </PreferenceCategory>
+            
+    <PreferenceCategory
+            android:title="Prompt Frequency Preference">
+
+                
+        <ListPreference
+                android:key="list_mor"
+                android:defaultValue="1"
+                android:title="Morning : 6:00 - 12:00"
+                android:summary=""
+                android:entries="@array/entries_list_preference_1"
+                android:entryValues="@array/entryvalues_list_preference_1"
+                android:dialogTitle="Choose Morning Frequency" />
+        <ListPreference
+                android:key="list_aft"
+                android:defaultValue="1"
+                android:title="Afternoon : 12:00 - 18:00"
+                android:summary=""
+                android:entries="@array/entries_list_preference_2"
+                android:entryValues="@array/entryvalues_list_preference_2"
+                android:dialogTitle="Choose Afternoon Frequency" />
+        <ListPreference
+                android:key="list_eve"
+                android:defaultValue="1"
+                android:title="Evening : 18:00 - 0:00"
+                android:summary=""
+                android:entries="@array/entries_list_preference_3"
+                android:entryValues="@array/entryvalues_list_preference_3"
+                android:dialogTitle="Choose Evening Frequency" />
+        <ListPreference
+                android:key="list_nig"
+                android:defaultValue="0"
+                android:title="Night : 0:00 - 6:00"
+                android:summary=""
+                android:entries="@array/entries_list_preference_4"
+                android:entryValues="@array/entryvalues_list_preference_4"
+                android:dialogTitle="Choose Night Frequency" />
+
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+            android:title="Do Not Disturb">
+
+                
+        <ListPreference
+                android:key="list_bhr"
+                
+                android:title="Blocking hours"
+                android:summary=""
+                android:entries="@array/entries_list_preference"
+                android:entryValues="@array/entryvalues_list_preference"
+                android:dialogTitle="Choose one" />
+        
+        <CheckBoxPreference
+                android:key="cbox_pbl"
+                android:defaultValue="false"
+                android:title="Disable active prompts on this device"
+                android:summary="" />
+        
+        <CheckBoxPreference
+                android:key="cbox_rtg"
+                android:defaultValue="false"
+                android:title="Enable Ringtone for Alarms"
+                android:summary="" />
+
+    </PreferenceCategory>
+
+    
+    
+</PreferenceScreen>

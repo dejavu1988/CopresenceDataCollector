@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 	xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/feedback"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/bg_whiteborder"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/initlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <Button
+                android:id="@+id/ask_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.60"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text="@string/ask_button"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:background="@drawable/appwidget_bg_clickable"
+                 />
+
+            <Button
+                android:id="@+id/ask_button1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.60"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text="@string/ask_button"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:background="@drawable/appwidget_bg_clickable"
+                android:visibility="gone" 
+                />
+            <Button
+                android:id="@+id/ask_button2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.60"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text="@string/ask_button"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:background="@drawable/appwidget_bg_clickable"
+                android:visibility="gone" 
+                />
+
+            <ImageView
+                android:id="@+id/indicator"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/green"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/back"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Bind"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/remindlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/remindinfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text="@string/remindinfo"
+                android:textColor="@color/ics_blue" 
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/set_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/set_button"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:background="@drawable/appwidget_bg_clickable" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/asklayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <LinearLayout
+                android:id="@+id/textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical"
+                android:visibility="visible" >
+
+               <!--  <blink
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center" >  -->
+
+                    <LinearLayout
+                        android:id="@+id/text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+                        
+                        <TextView
+                            android:id="@+id/statinfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                        	android:gravity="center"
+                            android:text=""
+                            android:textColor="@color/ics_blue" 
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/widgetinfo1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                        	android:gravity="center"
+                            android:text="@string/widgetinfo1"
+                            android:textColor="@color/ics_blue" 
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/bindname"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                        	android:gravity="center"
+                            android:text="@string/bindname"
+                            android:textColor="@color/ics_blue"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/widgetinfo2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                        	android:gravity="center"
+                            android:text="@string/widgetinfo2"
+                            android:textColor="@color/ics_blue" 
+                            android:textStyle="bold"
+                            />
+                    </LinearLayout>
+                <!-- </blink> -->
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/truthlayout"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/yes_button"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+       	        android:layout_weight="0.40"
+       	        android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:textStyle="bold"
+                    android:text="@string/a_button"
+                    android:textColor="#000000"
+                    android:background="@drawable/appwidget_bg_clickable_g" />
+	
+                <Button
+                    android:id="@+id/o_button"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+       	        android:layout_weight="0.00"
+                    android:layout_marginRight="5dp"
+                     android:textStyle="bold"
+                    android:text="@string/b_button"
+                    android:textColor="#000000"
+                    android:background="@drawable/appwidget_bg_clickable_y"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/no_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+       	        android:layout_weight="0.40"
+       	        android:layout_marginRight="5dp"
+                    android:textStyle="bold"
+                    android:text="@string/c_button"
+                    android:textColor="#000000"
+                    android:background="@drawable/appwidget_bg_clickable_r" />
+ 
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:text="@string/cancel_button"
+                android:textColor="#000000"
+                android:background="@drawable/appwidget_bg_clickable" />
+
+        </LinearLayout>
+        
+        
+
+    </LinearLayout>

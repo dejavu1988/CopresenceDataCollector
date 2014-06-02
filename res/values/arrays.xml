@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    
+    <!-- Used in preference -->
+    <string-array name="entries_list_preference">
+        <item>Clear</item>
+        
+        <item>1 hr</item>
+        <item>2 hrs</item>
+        <item>3 hrs</item> 
+        <item>6 hrs</item> 
+        <item>12 hrs</item> 
+        <item>24 hrs</item> 
+    </string-array>
+    <string-array name="entryvalues_list_preference">
+        <item>-1</item>
+       
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>6</item>
+        <item>12</item>
+        <item>24</item> 
+    </string-array>
+    
+    <string-array name="entries_list_preference_1">
+        <item>Every 15 min</item>
+        <item>Every 30 min</item>
+        <item>Every 1 hr</item>
+        <item>Every 2 hrs</item> 
+        <item>Never</item>  
+    </string-array>
+    <string-array name="entryvalues_list_preference_1">
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+        <item>8</item>
+        <item>0</item> 
+    </string-array>
+    
+    <string-array name="entries_list_preference_2">
+        <item>Every 15 min</item>
+        <item>Every 30 min</item>
+        <item>Every 1 hr</item>
+        <item>Every 2 hrs</item> 
+        <item>Never</item>  
+    </string-array>
+    <string-array name="entryvalues_list_preference_2">
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+        <item>8</item>
+        <item>0</item> 
+    </string-array>
+    
+    <string-array name="entries_list_preference_3">
+        <item>Every 15 min</item>
+       <item>Every 30 min</item>
+        <item>Every 1 hr</item>
+        <item>Every 2 hrs</item> 
+        <item>Never</item> 
+    </string-array>
+    <string-array name="entryvalues_list_preference_3">
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+        <item>8</item>
+        <item>0</item> 
+    </string-array>
+    
+    <string-array name="entries_list_preference_4">
+        <item>Every 15 min</item>
+        <item>Every 30 min</item>
+        <item>Every 1 hr</item>
+        <item>Every 2 hrs</item> 
+        <item>Never</item>   
+    </string-array>
+    <string-array name="entryvalues_list_preference_4">
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+        <item>8</item>
+        <item>0</item>  
+    </string-array>
+    
+
+</resources>

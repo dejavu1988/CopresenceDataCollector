@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"    
+        android:orientation="vertical" 
+        android:layout_width="fill_parent"    
+        android:layout_height="fill_parent">
+
+    <TextView   
+            android:id="@+id/debug"   
+            android:text=""
+            android:textColor="@color/ics_blue" 
+            android:layout_width="fill_parent"    
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+    
+    <LinearLayout
+            android:id="@+id/lay0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+       	    android:layout_marginBottom="5dp"
+       	    android:layout_marginLeft="5dp"
+       	    android:layout_marginRight="5dp"
+            android:orientation="vertical"
+            android:visibility="gone" >            
+        <TextView   
+            android:id="@+id/TextView01"   
+            android:text="Choose a nickname for your device:"
+            android:textColor="@color/ics_blue" 
+            android:layout_width="fill_parent"    
+            android:layout_height="wrap_content" />
+        <EditText android:hint="model name"   
+            android:id="@+id/EditText01"    
+            android:layout_width="fill_parent"    
+            android:layout_height="wrap_content"/> 
+        <View
+        	android:layout_width="fill_parent"
+        	android:layout_height="1px"
+        	android:background="?android:attr/listDivider"/>
+        <TextView   
+            android:id="@+id/TextView02"  
+            android:text="Is this device:"
+            android:textColor="@color/ics_blue" 
+            android:layout_width="fill_parent"    
+            android:layout_height="wrap_content" />
+        <LinearLayout
+       	    android:id="@+id/sublay"
+       	    android:layout_width="match_parent"
+       	    android:layout_height="wrap_content"
+       	    android:layout_gravity="center"
+       	    android:layout_marginTop="5dp"
+       	    android:layout_marginBottom="5dp"
+       	    android:layout_marginLeft="5dp"
+       	    android:layout_marginRight="5dp"
+       	    android:orientation="horizontal" >
+       	    <Button
+       	        android:id="@+id/Button01"
+       	        android:layout_width="fill_parent"
+       	        android:layout_height="match_parent"
+       	        android:layout_weight="0.40"
+            	android:layout_marginLeft="5dp"
+       	        android:layout_marginRight="5dp"
+       	        android:text="@string/first_button"
+       	        android:textColor="@color/ics_blue" />
+       	    <Button
+       	        android:id="@+id/Button02"
+       	        android:layout_width="fill_parent"
+       	        android:layout_height="match_parent"
+       	        android:layout_weight="0.40"
+       	        android:layout_marginLeft="5dp"
+       	        android:layout_marginRight="5dp"
+       	        android:text="@string/second_button"
+       	        android:textColor="@color/ics_blue" />
+       		</LinearLayout>
+    </LinearLayout>
+            
+    <LinearLayout
+            android:id="@+id/lay1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+       	    android:layout_marginBottom="5dp"
+       	    android:layout_marginLeft="5dp"
+       	    android:layout_marginRight="5dp"
+            android:orientation="vertical"
+            android:visibility="gone" >
+        <TextView   
+            android:id="@+id/TextView11"   
+            android:text="First device" 
+            android:textColor="@color/ics_blue"
+            android:layout_width="fill_parent"    
+            android:layout_height="wrap_content" />
+        <View
+        	android:layout_width="fill_parent"
+        	android:layout_height="1px"
+        	android:background="?android:attr/listDivider"/>
+        <TextView   
+            android:id="@+id/TextView12"   
+            android:text="Nickname:" 
+            android:textColor="@color/ics_blue"
+            android:layout_width="fill_parent"    
+            android:layout_height="wrap_content" />
+        <TextView
+                android:id="@+id/TextView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/back"
+                android:gravity="center"
+                android:text="" />
+       <!-- <Button   
+            android:text="Request Queue Number"
+       	    android:textColor="@color/ics_blue"   
+            android:id="@+id/Button11"    
+            android:layout_width="fill_parent"    
+            android:layout_height="wrap_content"/> -->
+        <TextView
+                android:id="@+id/TextView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/back"
+                android:gravity="center"
+                android:text="" />
+        <!-- <blink
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content">  -->
+        <TextView   
+            android:id="@+id/TextView15"   
+            android:text="@string/bind_instruction_1" 
+            android:textColor="@color/ics_blue"
+            android:layout_width="fill_parent"    
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <!-- </blink>  -->
+    </LinearLayout>
+    
+    <LinearLayout
+            android:id="@+id/lay2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+       	    android:layout_marginBottom="5dp"
+       	    android:layout_marginLeft="5dp"
+       	    android:layout_marginRight="5dp"
+            android:orientation="vertical"
+            android:visibility="gone" >
+        <TextView   
+            android:id="@+id/TextView21"   
+            android:text="Second device" 
+            android:textColor="@color/ics_blue"
+            android:layout_width="fill_parent"    
+            android:layout_height="wrap_content" />
+        <View
+        	android:layout_width="fill_parent"
+        	android:layout_height="1px"
+        	android:background="?android:attr/listDivider"/>
+        <TextView   
+            android:id="@+id/TextView22"   
+            android:text="Nickname:" 
+            android:textColor="@color/ics_blue"
+            android:layout_width="fill_parent"    
+            android:layout_height="wrap_content" />
+        <TextView
+                android:id="@+id/TextView23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/back"
+                android:gravity="center"
+                android:text="" />
+        <!-- <blink
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content">  -->
+        <TextView   
+            android:id="@+id/TextView24"   
+            android:text="@string/bind_instruction_2" 
+            android:textColor="@color/ics_blue"
+            android:layout_width="fill_parent"    
+            android:layout_height="wrap_content" />
+        <!--</blink> -->
+        <EditText android:hint="Queue Number"   
+            android:id="@+id/EditText21"    
+            android:layout_width="fill_parent"    
+            android:layout_height="wrap_content"/> 
+        <Button   
+            android:text="Submit Queue Number"
+            android:textColor="@color/ics_blue"   
+            android:id="@+id/Button21"    
+            android:layout_width="fill_parent"    
+            android:layout_height="wrap_content"/> 
+    </LinearLayout>
+    
+    <LinearLayout
+            android:id="@+id/lay3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+       	    android:layout_marginBottom="5dp"
+       	    android:layout_marginLeft="5dp"
+       	    android:layout_marginRight="5dp"
+            android:orientation="vertical"
+            android:visibility="gone" >
+        <TextView   
+            android:id="@+id/TextView31"   
+            android:text="@string/unbind_instruction" 
+            android:textColor="@color/ics_blue"
+            android:layout_width="fill_parent"    
+            android:layout_height="wrap_content" />
+        <Button   
+            android:text="Unbind" 
+            android:textColor="@color/ics_blue"  
+            android:id="@+id/Button31"    
+            android:layout_width="fill_parent"    
+            android:layout_height="wrap_content"/>    
+    </LinearLayout>
+        
+</LinearLayout>
