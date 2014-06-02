@@ -372,7 +372,7 @@ public class WorkerService extends Service{
 	    	FileWriter filewriter = new FileWriter(file);  
 	        BufferedWriter out = new BufferedWriter(filewriter);
 	        
-	        String meta = ob+"#"+uuid+"#"+gt+"\n";
+	        String meta = ob+"#"+uuid+"#"+gt+"#"+pM.getTaskComment()+"\n";
 	        out.write(meta);
 	        
 	        for(Entry e: gpsSatList){

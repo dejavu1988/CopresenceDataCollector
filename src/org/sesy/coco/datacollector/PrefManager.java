@@ -60,6 +60,8 @@ public class PrefManager {
     private static final String AUTO_GT = "AutoGroundTruth";
     private static final String AUTO_END = "AutoScannerEndTime";
     
+    private static final String TASK_COMMENT = "TaskComment";
+    
     Logger log;
     
     
@@ -192,6 +194,14 @@ public class PrefManager {
         editor.commit();
     } 
     
+    public void updateTaskComment(String comment){
+        
+        editor.putString(TASK_COMMENT, comment);
+         
+        // commit changes
+        editor.commit();
+    } 
+    
     public void updateSensorStatus(int status){
         
         editor.putInt(SENSOR_STATUS, status);
@@ -274,6 +284,10 @@ public class PrefManager {
     
     public String getName(){
 		return pref.getString(NAME, "");     
+    } 
+    
+    public String getTaskComment(){
+		return pref.getString(TASK_COMMENT, "");     
     } 
      
     public int getColocationCounter(){

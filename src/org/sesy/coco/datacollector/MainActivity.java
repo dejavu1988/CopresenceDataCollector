@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -30,6 +31,7 @@ public class MainActivity extends Activity {
 	private Button ba, ba1, ba2, by, bo, bn, bc, bs;
 	private ImageView im;
 	private TextView tb, t1, t2, t3, tr, t0;
+	private EditText et;
 	Logger log;
 	private PrefManager pM;
 	private StatusManager sM;
@@ -69,6 +71,7 @@ public class MainActivity extends Activity {
 		t1 = (TextView) findViewById(R.id.widgetinfo1);
 		t2 = (TextView) findViewById(R.id.bindname);
 		t3 = (TextView) findViewById(R.id.widgetinfo2);
+		et = (EditText) findViewById(R.id.taskCommentText);
 		
 		pM = new PrefManager(getApplicationContext());
 		sM = new StatusManager(getApplicationContext());
@@ -153,6 +156,8 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				log.info("Yes button clicked");
+				pM.updateTaskComment(et.getText().toString());
+				et.setText("");
 				DataMonitor.On_Demand = false;
 				AlarmService.alarmStatus = false;
 		  	  	if(AlarmService.vib != null){
@@ -208,7 +213,9 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				log.info("No button clicked");
+				log.info("No button clicked");				
+				pM.updateTaskComment(et.getText().toString());
+				et.setText("");
 				DataMonitor.On_Demand = false;
 				AlarmService.alarmStatus = false;
 		  	  	if(AlarmService.vib != null){
@@ -241,6 +248,7 @@ public class MainActivity extends Activity {
 				li.setVisibility(View.GONE);
 				lr.setVisibility(View.VISIBLE);
 				la.setVisibility(View.GONE);
+				et.setText("");
 				DataMonitor.On_Demand = false;
 				AlarmService.alarmStatus = false;
 		  	  	if(AlarmService.vib != null){

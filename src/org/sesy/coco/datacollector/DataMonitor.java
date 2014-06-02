@@ -27,6 +27,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -68,6 +69,7 @@ public final class DataMonitor extends StandOutWindow{
 	private Button ba, ba1, ba2, by, bo, bn, bc, bs;
 	private ImageView im;
 	private TextView tb, t1, t2, t3, tr, t0;
+	private EditText et;
 	//public static boolean winOn = false;
 	// Definition of the one requestCode we use for receiving results.
     //static final private int GET_CODE = 0;
@@ -189,6 +191,7 @@ public final class DataMonitor extends StandOutWindow{
 		t1 = (TextView) view.findViewById(R.id.widgetinfo1);
 		t2 = (TextView) view.findViewById(R.id.bindname);
 		t3 = (TextView) view.findViewById(R.id.widgetinfo2);
+		et = (EditText) view.findViewById(R.id.taskCommentText);
 		
 		ba.setOnClickListener(new Button.OnClickListener(){
 
@@ -255,6 +258,8 @@ public final class DataMonitor extends StandOutWindow{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				log.info("Yes button clicked");
+				pM.updateTaskComment(et.getText().toString());
+				et.setText("");
 				On_Demand = false;
 				AlarmService.alarmStatus = false;
 		  	  	if(AlarmService.vib != null){
@@ -311,6 +316,8 @@ public final class DataMonitor extends StandOutWindow{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				log.info("No button clicked");
+				pM.updateTaskComment(et.getText().toString());
+				et.setText("");
 				On_Demand = false;
 				AlarmService.alarmStatus = false;
 		  	  	if(AlarmService.vib != null){
@@ -343,6 +350,7 @@ public final class DataMonitor extends StandOutWindow{
 				li.setVisibility(View.GONE);
 				lr.setVisibility(View.VISIBLE);
 				la.setVisibility(View.GONE);
+				et.setText("");
 				On_Demand = false;
 				AlarmService.alarmStatus = false;
 		  	  	if(AlarmService.vib != null){
