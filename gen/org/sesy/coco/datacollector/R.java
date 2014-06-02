@@ -129,7 +129,7 @@ public final class R {
         public static final int attr5=0x7f0b003c;
         public static final int attr6=0x7f0b003f;
         public static final int attr7=0x7f0b004e;
-        public static final int binding=0x7f0b0066;
+        public static final int binding=0x7f0b0065;
         public static final int bindname=0x7f0b0034;
         public static final int blocklayout=0x7f0b0050;
         public static final int body=0x7f0b0063;
@@ -141,10 +141,10 @@ public final class R {
         public static final int debug=0x7f0b0000;
         public static final int description=0x7f0b0056;
         public static final int email=0x7f0b0024;
-        public static final int error=0x7f0b0067;
+        public static final int error=0x7f0b0066;
         public static final int feedback=0x7f0b0025;
         public static final int folder=0x7f0b0057;
-        public static final int help=0x7f0b0068;
+        public static final int help=0x7f0b0067;
         public static final int hide=0x7f0b0060;
         public static final int icon=0x7f0b0055;
         public static final int indicator=0x7f0b002a;
@@ -167,7 +167,7 @@ public final class R {
         public static final int no_button=0x7f0b0039;
         public static final int o_button=0x7f0b0038;
         public static final int preview=0x7f0b005c;
-        public static final int quit=0x7f0b0069;
+        public static final int quit=0x7f0b0068;
         public static final int range1_button=0x7f0b0051;
         public static final int range2_button=0x7f0b0052;
         public static final int range3_button=0x7f0b0053;
@@ -175,7 +175,6 @@ public final class R {
         public static final int release=0x7f0b0022;
         public static final int remindinfo=0x7f0b002d;
         public static final int remindlayout=0x7f0b002c;
-        public static final int sensors=0x7f0b0065;
         public static final int set_button=0x7f0b002e;
         public static final int setting=0x7f0b0064;
         public static final int statinfo=0x7f0b0032;
@@ -329,5 +328,6 @@ public final class R {
         public static final int appwidget_info=0x7f040000;
         public static final int help=0x7f040001;
         public static final int preferences=0x7f040002;
+        public static final int sensor_preferences=0x7f040003;
     }
 }

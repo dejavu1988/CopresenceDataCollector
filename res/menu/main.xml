@@ -9,10 +9,6 @@
         android:icon="@android:drawable/ic_menu_preferences"
         android:title="Setting"/>
     <item
-        android:id="@+id/sensors"
-        android:icon="@android:drawable/ic_menu_preferences"
-        android:title="Sensors"/>
-    <item
         android:id="@+id/binding"
         android:icon="@android:drawable/ic_menu_preferences"
         android:title="Bind/Unbind"/>

@@ -5,7 +5,7 @@
     android:versionName="0.4a1" >
 
     <uses-sdk
-        android:minSdkVersion="9"
+        android:minSdkVersion="11"
         android:targetSdkVersion="17" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -55,11 +55,6 @@
             android:excludeFromRecents="true"
             android:noHistory="true"
             android:label="@string/setting_name"></activity>
-        
-        <activity android:name=".SensorsActivity"
-            android:excludeFromRecents="true"
-            android:noHistory="true"
-            android:label="@string/sensors_name"></activity>
         
         <!-- <receiver android:name=".MyWidgetProvider" >
     		<intent-filter>

@@ -106,6 +106,75 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+            android:title="Select Sensor Modalities for Context Scanning">
+            
+        <CheckBoxPreference
+                android:key="cbox_gps"
+                android:defaultValue="true"
+                android:title="GPS"
+                android:summary="GPS raw data" />
+        
+        <CheckBoxPreference
+                android:key="cbox_wifi"
+                android:defaultValue="true"
+                android:title="WiFi"
+                android:summary="WiFi Access Points" />
+        
+        <CheckBoxPreference
+                android:key="cbox_bt"
+                android:defaultValue="true"
+                android:title="Bluetooth"
+                android:summary="Bluetooth inquiry" />
+        
+        <CheckBoxPreference
+                android:key="cbox_audio"
+                android:defaultValue="true"
+                android:title="Audio"
+                android:summary="Ambient sound recording" />
+        
+        <CheckBoxPreference
+                android:key="cbox_cell"
+                android:defaultValue="false"
+                android:title="Cell"
+                android:summary="Cell stations info" />
+        
+        <CheckBoxPreference
+                android:key="cbox_arp"
+                android:defaultValue="false"
+                android:title="ARP"
+                android:summary="LAN ARP info" />
+        
+        <CheckBoxPreference
+                android:key="cbox_mag"
+                android:defaultValue="false"
+                android:title="Magnetic Field"
+                android:summary="Ambient magnetic field" />
+        
+        <CheckBoxPreference
+                android:key="cbox_lig"
+                android:defaultValue="false"
+                android:title="Light"
+                android:summary="Luminance" />
+         
+        <CheckBoxPreference
+                android:key="cbox_temp"
+                android:defaultValue="false"
+                android:title="Temperature"
+                android:summary="Ambient air temperature" />
+        
+        <CheckBoxPreference
+                android:key="cbox_hum"
+                android:defaultValue="false"
+                android:title="Humidity"
+                android:summary="Ambient relative humidity" />
+        
+        <CheckBoxPreference
+                android:key="cbox_baro"
+                android:defaultValue="false"
+                android:title="Pressure"
+                android:summary="Ambient air pressure" />
     
+    </PreferenceCategory>
     
 </PreferenceScreen>

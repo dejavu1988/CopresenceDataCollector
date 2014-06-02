@@ -431,4 +431,36 @@ public class PrefManager {
     	calendar.setTimeZone(TimeZone.getDefault());
     	return formatter.format(calendar.getTime());
     }*/
+    
+    /**
+     * Gets the sensor mask of user preference.
+     * @return sensor modality mask
+     */
+    public int getSensorPrefState(){
+    	int res = Constants.STATUS_SENSOR_NULL;
+    	if (_pref.getBoolean(Constants.KEY_PREF_SENSOR_GPS, false))
+    		res = res | Constants.STATUS_SENSOR_GPS;
+    	if (_pref.getBoolean(Constants.KEY_PREF_SENSOR_WIFI, false))
+    		res = res | Constants.STATUS_SENSOR_WIFI;
+    	if (_pref.getBoolean(Constants.KEY_PREF_SENSOR_BT, false))
+    		res = res | Constants.STATUS_SENSOR_BT;
+    	if (_pref.getBoolean(Constants.KEY_PREF_SENSOR_AUD, false))
+    		res = res | Constants.STATUS_SENSOR_AUDIO;
+    	if (_pref.getBoolean(Constants.KEY_PREF_SENSOR_CELL, false))
+    		res = res | Constants.STATUS_SENSOR_CELL;
+    	if (_pref.getBoolean(Constants.KEY_PREF_SENSOR_ARP, false))
+    		res = res | Constants.STATUS_SENSOR_ARP;
+    	if (_pref.getBoolean(Constants.KEY_PREF_SENSOR_MAG, false))
+    		res = res | Constants.STATUS_SENSOR_MAG;
+    	if (_pref.getBoolean(Constants.KEY_PREF_SENSOR_LIG, false))
+    		res = res | Constants.STATUS_SENSOR_LIG;
+    	if (_pref.getBoolean(Constants.KEY_PREF_SENSOR_TEMP, false))
+    		res = res | Constants.STATUS_SENSOR_TEMP;
+    	if (_pref.getBoolean(Constants.KEY_PREF_SENSOR_HUM, false))
+    		res = res | Constants.STATUS_SENSOR_HUM;
+    	if (_pref.getBoolean(Constants.KEY_PREF_SENSOR_BARO, false))
+    		res = res | Constants.STATUS_SENSOR_BARO;
+    	
+    	return res;
+    }
 }

@@ -127,6 +127,7 @@ public class TriggerService extends Service{
 		gt = intent.getIntExtra("gt", 0);		
 		pM.updateGT(gt);
 		mt = sM.getSensorStatus();
+		mt = mt & pM.getSensorPrefState();
 		
 		//String role = intent.getStringExtra("role");
 		new Thread(new Runnable(){

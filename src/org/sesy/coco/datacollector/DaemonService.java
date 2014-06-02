@@ -817,6 +817,7 @@ public class DaemonService extends Service{
 	                          		log.info("triggerStatus ended, taskStatus started");
 	                          		pM.updateConnStatus(Constants.STATUS_CONN_READY);
 	                          		int mt = sM.getSensorStatus();
+	                          		mt = mt & pM.getSensorPrefState();
 	                          	  	mt = mt & Integer.parseInt(msgObj.get("mt"));	//intersection
 	                        		
 	                          	  	msgObj.clear();

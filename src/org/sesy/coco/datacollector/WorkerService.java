@@ -142,6 +142,7 @@ public class WorkerService extends Service{
 		pM.updateGT(gt);
 		ob = intent.getIntExtra("ob", 0);
 		mt = intent.getIntExtra("mt", Constants.STATUS_SENSOR_GWBAC);
+		mt = mt & pM.getSensorPrefState();
 		//pM.updateAudioState((mt & Constants.STATUS_SENSOR_AUDIO) == Constants.STATUS_SENSOR_AUDIO);
 		ar = intent.getBooleanExtra("ar", false);
 		log.info("Worker Service started with gt: "+gt + " mt:"+mt + " ar:" + ar);

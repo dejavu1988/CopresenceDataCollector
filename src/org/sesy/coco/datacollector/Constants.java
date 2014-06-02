@@ -103,4 +103,17 @@ public final class Constants {
 	public static final String INALLOW = "cbox_wid";
 	public static final String KEY_PREF_VER = "ver_pref";
 	public static final String KEY_PREF_ID = "id_pref";
+	
+	// Preference items for sensors
+	public static final String KEY_PREF_SENSOR_GPS = "cbox_gps";
+	public static final String KEY_PREF_SENSOR_WIFI = "cbox_wifi";
+	public static final String KEY_PREF_SENSOR_BT = "cbox_bt";
+	public static final String KEY_PREF_SENSOR_AUD = "cbox_audio";
+	public static final String KEY_PREF_SENSOR_CELL = "cbox_cell";
+	public static final String KEY_PREF_SENSOR_ARP = "cbox_arp";
+	public static final String KEY_PREF_SENSOR_MAG = "cbox_mag";
+	public static final String KEY_PREF_SENSOR_LIG = "cbox_lig";
+	public static final String KEY_PREF_SENSOR_TEMP = "cbox_temp";
+	public static final String KEY_PREF_SENSOR_HUM = "cbox_hum";
+	public static final String KEY_PREF_SENSOR_BARO = "cbox_baro";
 }
