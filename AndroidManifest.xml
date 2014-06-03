@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="11"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="14" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -46,12 +46,12 @@
         
         
         
-        <activity android:name=".BindActivity"
+        <activity android:name="org.sesy.coco.datacollector.BindActivity"
             android:excludeFromRecents="true"
             android:noHistory="true"
             	android:label="@string/bind_name" ></activity>
         
-        <activity android:name=".SettingActivity"
+        <activity android:name="org.sesy.coco.datacollector.SettingActivity"
             android:excludeFromRecents="true"
             android:noHistory="true"
             android:label="@string/setting_name"></activity>
@@ -64,87 +64,87 @@
 		</receiver>
 		<service android:name=".UpdateWidgetService"></service>  -->
 		
-		<service android:name=".DaemonService">		    
+		<service android:name="org.sesy.coco.datacollector.DaemonService">		    
 		</service>
-		<service android:name=".AlarmService">		    
+		<service android:name="org.sesy.coco.datacollector.AlarmService">		    
 		</service>
-		<service android:name=".DataMonitor">		    
+		<service android:name="org.sesy.coco.datacollector.DataMonitor">		    
 		</service>
 		
-		<service android:name=".TriggerService">	
+		<service android:name="org.sesy.coco.datacollector.TriggerService">	
 		    <intent-filter>
         		<action android:name="org.sesy.coco.datacollector.MY_TRIGGER_ACTION" />
     		</intent-filter>		   	
 		</service>
 		
-		<service android:name=".WorkerService">	
+		<service android:name="org.sesy.coco.datacollector.WorkerService">	
 		    <intent-filter>
         		<action android:name="org.sesy.coco.datacollector.MY_WORKER_ACTION" />
     		</intent-filter>		   	
 		</service>
-		<service android:name=".SensorListener">
+		<service android:name="org.sesy.coco.datacollector.SensorListener">
 		    <intent-filter>
         		<action android:name="org.sesy.coco.datacollector.MY_SENSOR_ACTION" />
     		</intent-filter>			   	
 		</service>
 		
 		<service
-            android:name=".GpsWorker">
+            android:name="org.sesy.coco.datacollector.GpsWorker">
             <intent-filter>
                 <action android:name="org.sesy.coco.datacollector.GPS_TASK_ACTION" />
             </intent-filter>
         </service>
         <service
-            android:name=".BluetoothWorker">
+            android:name="org.sesy.coco.datacollector.BluetoothWorker">
             <intent-filter>
                 <action android:name="org.sesy.coco.datacollector.BT_TASK_ACTION" />
             </intent-filter>
         </service>
         <service
-            android:name=".WifiWorker">
+            android:name="org.sesy.coco.datacollector.WifiWorker">
             <intent-filter>
                 <action android:name="org.sesy.coco.datacollector.WIFI_TASK_ACTION" />
             </intent-filter>
         </service>
         <service
-            android:name=".CellWorker">
+            android:name="org.sesy.coco.datacollector.CellWorker">
             <intent-filter>
                 <action android:name="org.sesy.coco.datacollector.CELL_TASK_ACTION" />
             </intent-filter>
         </service>
         <service
-            android:name=".ARPWorker">
+            android:name="org.sesy.coco.datacollector.ARPWorker">
             <intent-filter>
                 <action android:name="org.sesy.coco.datacollector.ARP_TASK_ACTION" />
             </intent-filter>
         </service>
         <service
-            android:name=".AudioWorker">
+            android:name="org.sesy.coco.datacollector.AudioWorker">
             <intent-filter>
                 <action android:name="org.sesy.coco.datacollector.AUDIO_TASK_ACTION" />
             </intent-filter>
         </service>
         <service
-            android:name=".AudioProc">
+            android:name="org.sesy.coco.datacollector.AudioProc">
         </service>
         
 		<!-- <activity android:name=".ReportLogActivity"
             	android:theme="@android:style/Theme.Translucent.NoTitleBar" ></activity> -->
 		
-		<activity android:name=".ReportErrActivity"
+		<activity android:name="org.sesy.coco.datacollector.ReportErrActivity"
 		    android:excludeFromRecents="true"
             android:noHistory="true"
             	android:theme="@android:style/Theme.Translucent.NoTitleBar" ></activity>
 		
-		<activity android:name=".HelpActivity"
+		<activity android:name="org.sesy.coco.datacollector.HelpActivity"
             	android:label="@string/help_name" ></activity>
 		
-		<activity android:name=".StatusActivity"
+		<activity android:name="org.sesy.coco.datacollector.StatusActivity"
 		    android:excludeFromRecents="true"
             android:noHistory="true"
             	android:label="@string/status_name" ></activity>
 		
-		<activity android:name=".MainActivity"
+		<activity android:name="org.sesy.coco.datacollector.MainActivity"
             	android:label="@string/main_name"
             	>
 		    <intent-filter>

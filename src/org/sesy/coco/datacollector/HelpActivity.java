@@ -81,19 +81,19 @@ public class HelpActivity extends PreferenceActivity implements OnSharedPreferen
 						new AlertDialog.Builder(HelpActivity.this).setTitle("Register Auto Scanner")
 						.setMessage("Automatic Scanner checks every 4min for 3hr. Do not move device for this period. And please remember to unregister automatic scanner if needed.")
 						.setCancelable(true)
-						.setPositiveButton("Colocation", new DialogInterface.OnClickListener()
+						.setPositiveButton("Co-presence", new DialogInterface.OnClickListener()
 						{	// When choosing to turn on GPS, go to setting page
 							public void onClick(DialogInterface dialog, int which)
 							{
 								pM.registerAutoScanner(1);
-								Toast.makeText(getBaseContext(), "Automatic Scanner has been set for colocation!", Toast.LENGTH_LONG).show();
+								Toast.makeText(getBaseContext(), "Automatic Scanner has been set for co-presence!", Toast.LENGTH_LONG).show();
 							}
-						}).setNegativeButton("Non-colocation", new DialogInterface.OnClickListener()
+						}).setNegativeButton("Non-copresence", new DialogInterface.OnClickListener()
 						{	// When choose not to open GPS, give a notice of disability
 							public void onClick(DialogInterface dialog, int which)
 							{
 								pM.registerAutoScanner(3);
-								Toast.makeText(getBaseContext(), "Automatic Scanner has been set for non-colocation!", Toast.LENGTH_LONG).show();
+								Toast.makeText(getBaseContext(), "Automatic Scanner has been set for non-copresence!", Toast.LENGTH_LONG).show();
 							}
 						}).show();
 					//}

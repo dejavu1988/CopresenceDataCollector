@@ -189,22 +189,32 @@ public class WorkerService extends Service{
         if((flag & Constants.STATUS_SENSOR_GWBAC) != 0){	//allowed only when at least one sensor enabled
         	//detach subtasks for modalities
         	metaTS = SystemClock.elapsedRealtime() - DaemonService.avgRTT/2;
-        	sensorTask = true;
-        	startService(sensorIntent);
-        	arpTask = true;
-        	startService(arpIntent);
+        	
+        	
+        	if((flag & Constants.STATUS_SENSOR_MLTHB) != 0){
+            	log.info("Ambient passive sensors task scheduled");
+            	sensorTask = true;
+                sensorIntent.putExtra("flag", flag);
+            	startService(sensorIntent);
+    		}
+        	
+        	if((flag & Constants.STATUS_SENSOR_ARP) == Constants.STATUS_SENSOR_ARP){
+            	log.info("ARP task scheduled");
+            	arpTask = true;
+            	startService(arpIntent);
+    		}
         	
             if((flag & Constants.STATUS_SENSOR_AUDIO) == Constants.STATUS_SENSOR_AUDIO){
     			log.info("Audio task scheduled");
     			audioTask = true;    			
     			isRecord = true;	// upload raw data
     			startService(taskIntent4);
-    		}else{
+    		}/*else{
     			log.info("Audio task scheduled");
     			audioTask = true;    
     			isRecord = false;
     			startService(taskIntent4);
-    		}
+    		}*/
             
             if((flag & Constants.STATUS_SENSOR_GPS) == Constants.STATUS_SENSOR_GPS){
             	log.info("GPS task scheduled");

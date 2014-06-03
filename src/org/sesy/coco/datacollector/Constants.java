@@ -53,6 +53,7 @@ public final class Constants {
 	//public static final int STATUS_SENSOR_GWB = 7;
 	//public static final int STATUS_SENSOR_GWBA = 15;
 	public static final int STATUS_SENSOR_GWBAC = 79;
+	public static final int STATUS_SENSOR_MLTHB = 3968;
 	
 	// Scan params
 	public static final int AUDIO_PERIOD = 10;

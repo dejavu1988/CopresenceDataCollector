@@ -22,6 +22,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.View.OnTouchListener;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -192,6 +193,7 @@ public final class DataMonitor extends StandOutWindow{
 		t2 = (TextView) view.findViewById(R.id.bindname);
 		t3 = (TextView) view.findViewById(R.id.widgetinfo2);
 		et = (EditText) view.findViewById(R.id.taskCommentText);
+		
 		
 		ba.setOnClickListener(new Button.OnClickListener(){
 
@@ -427,8 +429,8 @@ public final class DataMonitor extends StandOutWindow{
 	@Override
 	public int getFlags(int id) {
 		return super.getFlags(id) | StandOutFlags.FLAG_BODY_MOVE_ENABLE
-					| StandOutFlags.FLAG_WINDOW_EDGE_LIMITS_ENABLE
-					| StandOutFlags.FLAG_WINDOW_FOCUSABLE_DISABLE;
+					| StandOutFlags.FLAG_WINDOW_EDGE_LIMITS_ENABLE;
+					//| StandOutFlags.FLAG_WINDOW_FOCUSABLE_DISABLE;
 	}
 	
 	@Override

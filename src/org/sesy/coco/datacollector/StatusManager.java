@@ -136,7 +136,8 @@ public class StatusManager {
 		if(plM.isWifiOn())	flag |= Constants.STATUS_SENSOR_WIFI;
 		if(plM.isBTOn())	flag |= Constants.STATUS_SENSOR_BT;
 		if(plM.isCellAvailable())	flag |= Constants.STATUS_SENSOR_CELL;
-		if(pM.getAudioState()) flag |= Constants.STATUS_SENSOR_AUDIO;
+		//if(pM.getAudioState()) 
+		flag |= Constants.STATUS_SENSOR_AUDIO;
 		_sensorStatus = flag;
 		
 		if(_sensorStatus != pM.getSensorStatus()){

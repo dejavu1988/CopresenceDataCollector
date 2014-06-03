@@ -23,6 +23,7 @@ public class SensorListener extends Service implements SensorEventListener{
 	private SensorManager sensorManager; 
 	private Sensor sensorMAG, sensorLIG, sensorTEMP, sensorHUM, sensorBARO; 
 	private CountDownTimer timer;
+	private int flag;
 	//private int gt, ob;
     Logger log;
     
@@ -39,6 +40,7 @@ public class SensorListener extends Service implements SensorEventListener{
 	public int onStartCommand(Intent intent, int flags, int startId){
 		log.info("Acclistener task started");	
 		WorkerService.sensorTask = true;
+		flag = intent.getIntExtra("flag", Constants.STATUS_SENSOR_MLTHB);
 		//gt = intent.getIntExtra("gt", 0);
 		//ob = intent.getIntExtra("ob", 0);
 		WorkerService.sensorsClear();
@@ -168,18 +170,24 @@ public class SensorListener extends Service implements SensorEventListener{
      	if(sensorManager == null) { 
      		throw new UnsupportedOperationException("Sensors are not supported");
      	} 
+     	
     	// Get default sensor of type ACCELEROMETER
     	//sensorACC = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER); 
     	//sensorLACC = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION); 
-    	sensorMAG = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD); 
-    	sensorLIG = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT); 
+     	if((flag & Constants.STATUS_SENSOR_MAG) != 0)
+     		sensorMAG = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD); 
+     	if((flag & Constants.STATUS_SENSOR_LIG) != 0)
+     		sensorLIG = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT); 
     	//sensorGYRO = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE); 
     	//sensorGRAV = sensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY); 
     	//sensorROT = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR); 
     	//sensorORI = sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION); 
-    	sensorTEMP = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE); 
-    	sensorHUM = sensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY); 
-    	sensorBARO = sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE); 
+     	if((flag & Constants.STATUS_SENSOR_TEMP) != 0)
+     		sensorTEMP = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE); 
+     	if((flag & Constants.STATUS_SENSOR_HUM) != 0)
+     		sensorHUM = sensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY); 
+     	if((flag & Constants.STATUS_SENSOR_BARO) != 0)
+     		sensorBARO = sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE); 
     	//sensorPROX = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY); 
     	
     	/*if(sensorACC != null) { 
@@ -190,11 +198,11 @@ public class SensorListener extends Service implements SensorEventListener{
      	   sensorManager.registerListener(this, sensorLACC, SensorManager.SENSOR_DELAY_FASTEST); 
      	   timer.start();
      	}*/
-    	if(sensorMAG != null) { 
+    	if(sensorMAG != null && (flag & Constants.STATUS_SENSOR_MAG) != 0) { 
      	   sensorManager.registerListener(this, sensorMAG, SensorManager.SENSOR_DELAY_FASTEST); 
      	   timer.start();
      	}
-    	if(sensorLIG != null) { 
+    	if(sensorLIG != null && (flag & Constants.STATUS_SENSOR_LIG) != 0) { 
      	   sensorManager.registerListener(this, sensorLIG, SensorManager.SENSOR_DELAY_FASTEST); 
      	   timer.start();
      	}
@@ -214,15 +222,15 @@ public class SensorListener extends Service implements SensorEventListener{
      	   sensorManager.registerListener(this, sensorORI, SensorManager.SENSOR_DELAY_FASTEST); 
      	   timer.start();
      	}*/
-    	if(sensorTEMP != null) { 
+    	if(sensorTEMP != null && (flag & Constants.STATUS_SENSOR_TEMP) != 0) { 
      	   sensorManager.registerListener(this, sensorTEMP, SensorManager.SENSOR_DELAY_FASTEST); 
      	   timer.start();
      	}
-    	if(sensorHUM != null) { 
+    	if(sensorHUM != null && (flag & Constants.STATUS_SENSOR_HUM) != 0) { 
      	   sensorManager.registerListener(this, sensorHUM, SensorManager.SENSOR_DELAY_FASTEST); 
      	   timer.start();
      	}
-    	if(sensorBARO != null) { 
+    	if(sensorBARO != null && (flag & Constants.STATUS_SENSOR_BARO) != 0) { 
      	   sensorManager.registerListener(this, sensorBARO, SensorManager.SENSOR_DELAY_FASTEST); 
      	   timer.start();
      	}
