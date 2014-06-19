@@ -434,9 +434,9 @@ public class PrefManager {
     /**
      * check audio recording 
      * */
-    public boolean getAudioState(){
+    /*public boolean getAudioState(){
     	return _pref.getBoolean(Constants.KEY_PREF_AUD, false);
-    }  
+    }  */
     
     /*private String getTime(long ms, String timeFormat){
     	DateFormat formatter = new SimpleDateFormat(timeFormat);

@@ -59,7 +59,8 @@ public class AudioWorker extends Service {
 		log.info("Subtask Audio");
 		//gt = intent.getIntExtra("gt", 0);
 		//ob = intent.getIntExtra("ob", 0);
-		ar = intent.getBooleanExtra("ar", false);
+		//ar = intent.getBooleanExtra("ar", false);
+		ar = true;
 		WorkerService.audList.clear();
 		extAudioRecorder = ExtAudioRecorder.getInstanse(false);
 		
@@ -91,7 +92,7 @@ public class AudioWorker extends Service {
 					 * send json string to server with "send"
 					 * -------------------
 					 */
-					HashMap<String,String> msgObj = new HashMap<String,String>();
+					/*HashMap<String,String> msgObj = new HashMap<String,String>();
 	        		String msg = ""; 
 	        		msgObj.clear();                  	
 	        		
@@ -116,7 +117,7 @@ public class AudioWorker extends Service {
 	        		//remove wav if not server storage not enabled	
 					if(!WorkerService.isRecord){
 						new File(WorkerService.wavPath).delete();
-					}
+					}*/
 					
 					Entry eobj = new Entry();				
 					//eobj.setOB(ob);

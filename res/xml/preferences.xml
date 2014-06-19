@@ -29,7 +29,8 @@
             
     </PreferenceCategory>
     
-    <PreferenceCategory
+    <!-- Blocked preference for audio recording with privacy concern. -->
+    <!-- <PreferenceCategory
             android:title="Privacy Preference">
             
         <CheckBoxPreference
@@ -38,7 +39,7 @@
                 android:title="Enable Audio Raw-data Storage on Server"
                 android:summary="" />
             
-    </PreferenceCategory>
+    </PreferenceCategory> -->
             
     <PreferenceCategory
             android:title="Prompt Frequency Preference">

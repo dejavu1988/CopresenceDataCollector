@@ -333,8 +333,8 @@ public class WorkerService extends Service{
     			responseCode1 = htfu1.doUpload(false);
     			HttpFileUploader htfu2 = new HttpFileUploader(getApplicationContext(), wavPath);
     			responseCode2 = htfu2.doUpload(false);
-    			HttpFileUploader htfu3 = new HttpFileUploader(getApplicationContext(), txtPath[1]);
-    			responseCode3 = htfu3.doUpload(false);
+    			//HttpFileUploader htfu3 = new HttpFileUploader(getApplicationContext(), txtPath[1]);
+    			//responseCode3 = htfu3.doUpload(false);
     			
 	        } catch (Exception e) {
 	          e.printStackTrace();
@@ -344,7 +344,7 @@ public class WorkerService extends Service{
 
 	    @Override
 	    protected void onPostExecute(final Void unused) {
-	    	if(responseCode1 == 200 && responseCode2 == 200 && responseCode3 == 200){
+	    	if(responseCode1 == 200 && responseCode2 == 200){
 	    		Toast.makeText(getApplicationContext(), "DataFile is Uploaded Successfully!", Toast.LENGTH_LONG).show();
 	    	}
 	    	uploadStatus = false;	   
