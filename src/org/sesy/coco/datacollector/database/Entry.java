@@ -18,6 +18,12 @@ public class Entry {
 		this.fp = "";
 	}
 	
+	public Entry(long ts) {
+		this.ts = ts;
+		this.mt = 0;
+		this.fp = "";
+	}
+	
 	public Entry(long ts, int mt) {
 		//this.ob = ob;
 		this.ts = ts;

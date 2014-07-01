@@ -48,6 +48,20 @@ public final class Constants {
 	//public static final int STATUS_SENSOR_ROT= 65536;
 	//public static final int STATUS_SENSOR_LACC= 131072;
 	//public static final int STATUS_SENSOR_PROX= 262144;
+	public static final int STATUS_SENSORDRONE= 4096;
+	
+	
+	// Sensordrone masks
+	public static final int SD_SENSOR_TEMPERATURE = 1;
+	public static final int SD_SENSOR_HUMIDITY = 2;
+	public static final int SD_SENSOR_PRESSURE = 4;
+	public static final int SD_SENSOR_IR_TEMPERATURE = 8;
+	public static final int SD_SENSOR_RGBC = 16;
+	public static final int SD_SENSOR_PRECISION_GAS = 32;
+	public static final int SD_SENSOR_REDUCING_GAS = 64;
+	public static final int SD_SENSOR_OXIDIZING_GAS = 128;
+	public static final int SD_SENSOR_CAPACITANCE = 256;
+	public static final int SD_SENSOR_ALTITUDE = 512;
 	
 	// Sensor Status: sensor combinations
 	//public static final int STATUS_SENSOR_GWB = 7;
@@ -106,6 +120,7 @@ public final class Constants {
 	public static final String KEY_PREF_ID = "id_pref";
 	
 	// Preference items for sensors
+	public static final String KEY_PREF_SENSORDRONE = "cbox_sd";
 	public static final String KEY_PREF_SENSOR_GPS = "cbox_gps";
 	public static final String KEY_PREF_SENSOR_WIFI = "cbox_wifi";
 	public static final String KEY_PREF_SENSOR_BT = "cbox_bt";

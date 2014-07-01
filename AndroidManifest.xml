@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> 
@@ -87,7 +88,11 @@
         		<action android:name="org.sesy.coco.datacollector.MY_SENSOR_ACTION" />
     		</intent-filter>			   	
 		</service>
-		
+		<service android:name="org.sesy.coco.datacollector.SensordroneWorker">
+		    <intent-filter>
+        		<action android:name="org.sesy.coco.datacollector.MY_SENSORDRONE_ACTION" />
+    		</intent-filter>			   	
+		</service>
 		<service
             android:name="org.sesy.coco.datacollector.GpsWorker">
             <intent-filter>
@@ -138,6 +143,11 @@
 		
 		<activity android:name="org.sesy.coco.datacollector.HelpActivity"
             	android:label="@string/help_name" ></activity>
+		
+		<activity android:name="org.sesy.coco.datacollector.SDSetupActivity"
+		    android:excludeFromRecents="true"
+            android:noHistory="true"
+            	android:label="@string/sdsetup_name" ></activity>
 		
 		<activity android:name="org.sesy.coco.datacollector.StatusActivity"
 		    android:excludeFromRecents="true"

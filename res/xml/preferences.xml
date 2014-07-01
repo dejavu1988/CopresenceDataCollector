@@ -108,29 +108,40 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+            android:title="Using Sensordrone">
+            
+        <CheckBoxPreference
+                android:key="cbox_sd"
+                android:defaultValue="false"
+                android:title="Use Sensordrone to collect environmental data"
+                android:summary="Make sure your sensordrone is paired to device." />
+            
+    </PreferenceCategory>
+    
+    <PreferenceCategory
             android:title="Select Sensor Modalities for Context Scanning">
             
         <CheckBoxPreference
                 android:key="cbox_gps"
-                android:defaultValue="true"
+                android:defaultValue="false"
                 android:title="GPS"
                 android:summary="GPS raw data" />
         
         <CheckBoxPreference
                 android:key="cbox_wifi"
-                android:defaultValue="true"
+                android:defaultValue="false"
                 android:title="WiFi"
                 android:summary="WiFi Access Points" />
         
         <CheckBoxPreference
                 android:key="cbox_bt"
-                android:defaultValue="true"
+                android:defaultValue="false"
                 android:title="Bluetooth"
                 android:summary="Bluetooth inquiry" />
         
         <CheckBoxPreference
                 android:key="cbox_audio"
-                android:defaultValue="true"
+                android:defaultValue="false"
                 android:title="Audio"
                 android:summary="Ambient sound recording" />
         

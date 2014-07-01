@@ -42,7 +42,9 @@ public final class DataMonitor extends StandOutWindow{
 
 	private static final int APP_SELECTOR_ID = -2;
 	private static final int APP_SELECTOR_CODE = 2;
-	public static final int APP_SELECTOR_FINISHED_CODE = 3;	
+	public static final int APP_SELECTOR_FINISHED_CODE = 3;
+	private static final int APP_SDSETUP_CODE = 20;
+	public static final int APP_SDSETUP_FINISHED_CODE = 21;	
 	private static final int APP_BIND_CODE = 5;
 	private static final int APP_HELP_CODE = 10;
 	public static final int APP_HELP_FINISHED_CODE = 11;
@@ -1248,6 +1250,141 @@ public final class DataMonitor extends StandOutWindow{
 				screenshot.startAnimation(mFadeOut);
 			}				
 			break;
+		
+		case APP_SDSETUP_CODE:
+			log.info("main window received");
+			if (true) {
+				// app bind receives data
+				//Window window = show(APP_SELECTOR_ID);
+				//window.data.putInt("fromId", fromId);
+				final Window window = getWindow(DEFAULT_ID);
+				final StandOutLayoutParams params = (StandOutLayoutParams) window.getLayoutParams();
+				PX = params.x; PY = params.y;
+				//PW = params.width;	PH = params.height;
+				final View folderView = window.findViewById(R.id.feedback);
+				final ImageView screenshot = (ImageView) window
+						.findViewById(R.id.preview);
+				
+				if (FullSize){
+					FullSize = false;
+
+					final Drawable drawable = getResources().getDrawable(
+							R.drawable.ic_menu_archive);
+
+					screenshot.setImageDrawable(drawable);
+
+					mFadeOut.setAnimationListener(new AnimationListener() {
+
+						@Override
+						public void onAnimationStart(Animation animation) {
+						}
+
+						@Override
+						public void onAnimationRepeat(Animation animation) {
+						}
+
+						@Override
+						public void onAnimationEnd(Animation animation) {
+							folderView.setVisibility(View.GONE);
+
+							// post so that the widget is invisible
+							// before
+							// anything else happens
+							screenshot.post(new Runnable() {
+
+								@Override
+								public void run() {
+									// preview should be centered
+									// vertically
+									params.x = 0; params.y = 0;
+									//params.y = params.y + params.height / 2
+									//		- drawable.getIntrinsicHeight() / 2;
+
+									params.width = drawable.getIntrinsicWidth();
+									params.height = drawable
+											.getIntrinsicHeight();
+
+									updateViewLayout(DEFAULT_ID, params);
+
+									screenshot.setVisibility(View.VISIBLE);
+									screenshot.startAnimation(mFadeIn);
+								}
+							});
+						}
+					});
+
+					folderView.startAnimation(mFadeOut);
+				}
+				Intent intent = new Intent();
+				intent.setClass(this, SDSetupActivity.class);
+				intent.putExtra("wid", DEFAULT_ID);
+				intent.putExtra("blink", 1);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				startActivity(intent);
+			}
+			break;
+			
+		case APP_SDSETUP_FINISHED_CODE:
+			log.info("main window end received");
+			if (!FullSize) {
+				FullSize = true;
+				
+				final Window window = getWindow(DEFAULT_ID);
+				final ImageView screenshot = (ImageView) window
+						.findViewById(R.id.preview);
+				final View folderView = window.findViewById(R.id.feedback);
+				final StandOutLayoutParams params = (StandOutLayoutParams) window.getLayoutParams();
+
+				mFadeOut.setAnimationListener(new AnimationListener() {
+
+					@Override
+					public void onAnimationStart(Animation animation) {
+						//Log.d("FloatingFolder", "Animation started");
+					}
+
+					@Override
+					public void onAnimationRepeat(Animation animation) {
+					}
+
+					@Override
+					public void onAnimationEnd(Animation animation) {
+						//Log.d("FloatingFolder", "Animation ended");
+						screenshot.setVisibility(View.GONE);
+
+						// post so that screenshot is invisible
+						// before anything else happens
+						screenshot.post(new Runnable() {
+
+							@Override
+							public void run() {
+								StandOutLayoutParams originalParams = getParams(DEFAULT_ID, window);
+
+								Drawable drawable = screenshot
+										.getDrawable();
+								screenshot.setImageDrawable(null);
+								params.x = PX; params.y = PY;
+								/*params.y = params.y - originalParams.height
+										/ 2 + drawable.getIntrinsicHeight()
+										/ 2;*/
+
+								//params.width = PW;
+								//params.height = PH;
+								params.width = originalParams.width;
+								params.height = originalParams.height;
+
+								updateViewLayout(DEFAULT_ID, params);
+
+								folderView.setVisibility(View.VISIBLE);
+
+								folderView.startAnimation(mFadeIn);
+							}
+						});
+					}
+				});
+
+				screenshot.startAnimation(mFadeOut);
+			}				
+			break;
 			
 		case APP_ALARM_CODE:
 			log.info("widget alarm received");
@@ -1594,6 +1731,18 @@ public final class DataMonitor extends StandOutWindow{
 					public void run() {
 						// show app selector
 						sendData(id, DataMonitor.class, DEFAULT_ID, APP_SELECTOR_CODE, null);
+						/*Intent intent = new Intent();
+						intent.setClass(this, SettingActivity.class);						
+						startActivity(intent);*/
+					}
+				}));
+		items.add(new DropDownListItem(android.R.drawable.ic_menu_preferences,
+				"Setup Sensordrone", new Runnable() {
+
+					@Override
+					public void run() {
+						// show app selector
+						sendData(id, DataMonitor.class, DEFAULT_ID, APP_SDSETUP_CODE, null);
 						/*Intent intent = new Intent();
 						intent.setClass(this, SettingActivity.class);						
 						startActivity(intent);*/

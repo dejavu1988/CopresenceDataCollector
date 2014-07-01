@@ -55,6 +55,7 @@
     <string name="foreground_service_label">Data Collection Daemon Service</string>
     <string name="bind_name">Binding</string>
     <string name="setting_name">Setting</string>
+    <string name="sdsetup_name">SensorDrone Setup</string>
     <string name="sensors_name">Sensors</string>
     <string name="first_button">First</string>
     <string name="second_button">Second</string>

@@ -304,6 +304,10 @@ public class MainActivity extends Activity {
     		Intent intentSetting = new Intent(MainActivity.this, SettingActivity.class);
     		startActivity(intentSetting);
     		break;
+    	case R.id.setupsd:
+    		Intent intentSDSetup = new Intent(MainActivity.this, SDSetupActivity.class);
+    		startActivity(intentSDSetup);
+    		break;
     	case R.id.binding:
     		Intent intentBind = new Intent(MainActivity.this, BindActivity.class);
     		startActivity(intentBind);

@@ -43,15 +43,16 @@ public class WorkerService extends Service{
 	private static final String ARP_TASK_ACTION =  "org.sesy.coco.datacollector.ARP_TASK_ACTION";
 	private static final String AUDIO_TASK_ACTION =  "org.sesy.coco.datacollector.AUDIO_TASK_ACTION";
 	public static final String MY_SENSOR_ACTION = "org.sesy.coco.datacollector.MY_SENSOR_ACTION";
+	public static final String MY_SENSORDRONE_ACTION = "org.sesy.coco.datacollector.MY_SENSORDRONE_ACTION";
 	//public static boolean taskStatus = false; 
 	public static boolean audioRole = false;
 	public static boolean uploadStatus = false;
-	public static boolean gpsTask, btTask, wifiTask, audioTask, cellTask, arpTask, sensorTask = false;
-	public static boolean gpsTaskDone, btTaskDone, wifiTaskDone, audioTaskDone, cellTaskDone, arpTaskDone, sensorTaskDone = false;
+	public static boolean gpsTask, btTask, wifiTask, audioTask, cellTask, arpTask, sensorTask, sensordroneTask = false;
+	public static boolean gpsTaskDone, btTaskDone, wifiTaskDone, audioTaskDone, cellTaskDone, arpTaskDone, sensorTaskDone, sensordroneTaskDone = false;
 	//public static boolean laccTask, magTask, ligTask, gyroTask, gravTask, rotTask, oriTask, tempTask, humTask, baroTask, proxTask = false;
 	//public static boolean laccTaskDone, magTaskDone, ligTaskDone, gyroTaskDone, gravTaskDone, rotTaskDone, oriTaskDone, tempTaskDone, humTaskDone, baroTaskDone, proxTaskDone = false;
 	public static List<Entry> gpsSatList, gpsLocList, wifiList, btList, cellList, arpList, audList = null;
-	public static List<Entry> magList, ligList, tempList, humList, baroList = null;
+	public static List<Entry> magList, ligList, tempList, humList, baroList, sdList = null;
 	public static long metaTS = 0L;
 	public static String wavPath = "";
 	public static String wavName = "";
@@ -70,7 +71,7 @@ public class WorkerService extends Service{
 	private boolean ar;
 	public static String uuid;
 	Thread thr;
-	Intent taskIntent1, taskIntent2, taskIntent3, taskIntent4, taskIntent4_1, sensorIntent, taskIntent5, arpIntent;
+	Intent taskIntent1, taskIntent2, taskIntent3, taskIntent4, taskIntent4_1, sensorIntent, taskIntent5, arpIntent, sdIntent;
 	Logger log;
 	
 	
@@ -102,6 +103,7 @@ public class WorkerService extends Service{
         humList = new ArrayList<Entry>();
         baroList = new ArrayList<Entry>();
         //proxList = new ArrayList<Entry>();
+        sdList = new ArrayList<Entry>();
         
         uuid = Secure.getString(this.getContentResolver(),Secure.ANDROID_ID);
         
@@ -120,6 +122,8 @@ public class WorkerService extends Service{
         arpTaskDone = false;
         sensorTask = false;
         sensorTaskDone = false;
+        sensordroneTask = false;
+        sensordroneTaskDone = false;
 	}
 	
 	@Override
@@ -183,13 +187,20 @@ public class WorkerService extends Service{
 		arpIntent = new Intent(ARP_TASK_ACTION);
 		//arpIntent.putExtra("ob", ob);
 		//arpIntent.putExtra("gt", gt);
+		sdIntent = new Intent(MY_SENSORDRONE_ACTION);
 		
         flag = sM.getSensorStatus();
         flag = flag & mt;
-        if((flag & Constants.STATUS_SENSOR_GWBAC) != 0){	//allowed only when at least one sensor enabled
+        if(flag != 0){	//allowed only when at least one sensor enabled
         	//detach subtasks for modalities
         	metaTS = SystemClock.elapsedRealtime() - DaemonService.avgRTT/2;
         	
+        	if((flag & Constants.STATUS_SENSORDRONE) != 0){
+            	log.info("Sensordrone sensors task scheduled");
+            	sensordroneTask = true;
+                //sdIntent.putExtra("flag", flag);
+            	startService(sdIntent);
+    		}
         	
         	if((flag & Constants.STATUS_SENSOR_MLTHB) != 0){
             	log.info("Ambient passive sensors task scheduled");
@@ -273,7 +284,7 @@ public class WorkerService extends Service{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-        		if(!(gpsTask ^ gpsTaskDone) && !(wifiTask ^ wifiTaskDone) && !(btTask ^ btTaskDone) && !(audioTask ^ audioTaskDone) && !(cellTask ^ cellTaskDone) && !(arpTask ^ arpTaskDone) && !(sensorTask ^ sensorTaskDone)){
+        		if(!(gpsTask ^ gpsTaskDone) && !(wifiTask ^ wifiTaskDone) && !(btTask ^ btTaskDone) && !(audioTask ^ audioTaskDone) && !(cellTask ^ cellTaskDone) && !(arpTask ^ arpTaskDone) && !(sensorTask ^ sensorTaskDone) && !(sensordroneTask ^ sensordroneTaskDone)){
         			log.info("All tasks done.");
         			flag1 = false;
         		}        
@@ -433,6 +444,10 @@ public class WorkerService extends Service{
 	        	result = e.getTS() +";" + e.getMT() +";" + e.getFP() +"\n";
 	        	out.write(result);
 	        }	
+	        for(Entry e: sdList){
+	        	result = e.getTS() +";SD" + e.getMT() +";" + e.getFP() +"\n";
+	        	out.write(result);
+	        }
 	        		    
 		    out.close();
 		}
@@ -453,6 +468,7 @@ public class WorkerService extends Service{
 		humList.clear();
 		baroList.clear();
 		//proxList.clear();
+		sdList.clear();
 	}
 	
 }

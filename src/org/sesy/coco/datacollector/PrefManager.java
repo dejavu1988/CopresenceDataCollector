@@ -62,6 +62,9 @@ public class PrefManager {
     
     private static final String TASK_COMMENT = "TaskComment";
     
+    // Sensordrone MAC address
+    private static final String SDMAC = "SensordroneMAC";
+    
     Logger log;
     
     
@@ -251,6 +254,16 @@ public class PrefManager {
         _editor.commit();
     }  */
     
+    /**
+     * update sensordrone MAC address
+     * */
+    public void updateSensordroneMAC(String mac){
+        
+        editor.putString(SDMAC, mac);
+         
+        // commit changes
+        editor.commit();
+    }  
        
     
     /**
@@ -474,7 +487,36 @@ public class PrefManager {
     		res = res | Constants.STATUS_SENSOR_HUM;
     	if (_pref.getBoolean(Constants.KEY_PREF_SENSOR_BARO, false))
     		res = res | Constants.STATUS_SENSOR_BARO;
+    	if (_pref.getBoolean(Constants.KEY_PREF_SENSORDRONE, false))
+    		res = res | Constants.STATUS_SENSORDRONE;
     	
     	return res;
+    }
+    
+    /**
+     * Gets the preference of whether sensordrone is selected by user or not.
+     * @return true if sensordrone is selected, otherwise false.
+     */
+    public boolean getSensordroneEnabled(){
+    	return _pref.getBoolean(Constants.KEY_PREF_SENSORDRONE, false);
+    }
+    
+    /**
+     * Updates the preference of whether sensordrone is selected by user or not.
+     * @param flag true if sensordrone is selected, otherwise false.
+     */
+    /*public void updateSensordroneEnabled(boolean flag){
+    	_editor.putBoolean(Constants.KEY_PREF_SENSORDRONE, flag);
+        
+        // commit changes
+        _editor.commit();
+    }*/
+    
+    /**
+     * Gets sensordrone MAC address
+     * @return
+     */
+    public String getSensordroneMAC(){
+		return pref.getString(SDMAC, "");     
     }
 }

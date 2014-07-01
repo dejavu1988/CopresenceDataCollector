@@ -9,6 +9,10 @@
         android:icon="@android:drawable/ic_menu_preferences"
         android:title="Setting"/>
     <item
+        android:id="@+id/setupsd"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="Setup Sensordrone"/>
+    <item
         android:id="@+id/binding"
         android:icon="@android:drawable/ic_menu_preferences"
         android:title="Bind/Unbind"/>

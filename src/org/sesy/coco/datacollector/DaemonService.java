@@ -23,6 +23,10 @@ import wei.mark.standout.StandOutWindow;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.musicg.wave.Wave;
+import com.sensorcon.sensordrone.DroneEventHandler;
+import com.sensorcon.sensordrone.DroneEventObject;
+import com.sensorcon.sensordrone.android.Drone;
+import com.sensorcon.sensordrone.android.tools.DroneConnectionHelper;
 
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -91,6 +95,11 @@ public class DaemonService extends Service{
     private Object[] mStartForegroundArgs = new Object[2];
     private Object[] mStopForegroundArgs = new Object[1];
     private Logger log;
+    
+    public static Drone myDrone = new Drone();
+    public static DroneConnectionHelper myHelper = new DroneConnectionHelper();
+    public DroneEventHandler myDroneEventHandler;
+    
     
     void startForegroundCompat(int id, Notification notification) {
         // If we have the new startForeground API, then use it.
@@ -216,6 +225,25 @@ public class DaemonService extends Service{
 		
 		thrm = new Thread(new Daemon(this));
 		thrm.start();
+		
+		myDroneEventHandler = new DroneEventHandler(){
+
+			@Override
+			public void parseEvent(DroneEventObject droneEventObject) {
+				// TODO Auto-generated method stub
+				if(droneEventObject.matches(DroneEventObject.droneEventType.CONNECTED)){
+					pM.updateSensordroneMAC(myDrone.lastMAC);
+					Toast.makeText(getApplicationContext(), "Sensordrone is connected", Toast.LENGTH_SHORT).show();
+				}else if(droneEventObject.matches(DroneEventObject.droneEventType.CONNECTION_LOST)){
+					Toast.makeText(getApplicationContext(), "Sensordrone connection lost", Toast.LENGTH_SHORT).show();
+					// Try to reconnect once, automatically
+					myDrone.btConnect(myDrone.lastMAC);
+				}else if(droneEventObject.matches(DroneEventObject.droneEventType.DISCONNECTED)){
+					Toast.makeText(getApplicationContext(), "Sensordrone is disconnected", Toast.LENGTH_SHORT).show();
+				}
+			}
+			
+		};
     }
 
     public synchronized void stopThread(){
@@ -230,6 +258,9 @@ public class DaemonService extends Service{
     public void onDestroy() {
         // Make sure our notification is gone.
         stopForegroundCompat(R.string.foreground_service_started);
+
+		myDrone.unregisterDroneListener(myDroneEventHandler);
+		
         connected = false;
         checked = false;
         autochecked = false;
@@ -272,7 +303,9 @@ public class DaemonService extends Service{
         thra.start();
         thrk.start();
         thrauto.start();
-        
+
+		myDrone.registerDroneListener(myDroneEventHandler);
+		
         return START_NOT_STICKY;
     }
 
