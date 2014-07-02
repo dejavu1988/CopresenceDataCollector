@@ -138,6 +138,10 @@ public class StatusManager {
 		if(plM.isCellAvailable())	flag |= Constants.STATUS_SENSOR_CELL;
 		//if(pM.getAudioState()) 
 		flag |= Constants.STATUS_SENSOR_AUDIO;
+		// Added other sensors by default
+		flag |= Constants.STATUS_SENSOR_ARP;
+		flag |= Constants.STATUS_SENSOR_ONBOARD;
+		flag |= Constants.STATUS_SENSORDRONE;
 		_sensorStatus = flag;
 		
 		if(_sensorStatus != pM.getSensorStatus()){

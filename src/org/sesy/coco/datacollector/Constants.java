@@ -48,20 +48,21 @@ public final class Constants {
 	//public static final int STATUS_SENSOR_ROT= 65536;
 	//public static final int STATUS_SENSOR_LACC= 131072;
 	//public static final int STATUS_SENSOR_PROX= 262144;
+	public static final int STATUS_SENSOR_ONBOARD= 3968;	//MAG,LIG,TEMP,HUM,BARO
 	public static final int STATUS_SENSORDRONE= 4096;
 	
 	
 	// Sensordrone masks
-	public static final int SD_SENSOR_TEMPERATURE = 1;
-	public static final int SD_SENSOR_HUMIDITY = 2;
-	public static final int SD_SENSOR_PRESSURE = 4;
-	public static final int SD_SENSOR_IR_TEMPERATURE = 8;
-	public static final int SD_SENSOR_RGBC = 16;
-	public static final int SD_SENSOR_PRECISION_GAS = 32;
-	public static final int SD_SENSOR_REDUCING_GAS = 64;
-	public static final int SD_SENSOR_OXIDIZING_GAS = 128;
-	public static final int SD_SENSOR_CAPACITANCE = 256;
-	public static final int SD_SENSOR_ALTITUDE = 512;
+	public static final int SD_SENSOR_TEMPERATURE = 1;	//Ambient temperature, in Celcius
+	public static final int SD_SENSOR_HUMIDITY = 2;	// Humidity, relative percentage
+	public static final int SD_SENSOR_PRESSURE = 4;	// Air pressure (Pa)
+	public static final int SD_SENSOR_IR_TEMPERATURE = 8;		// Object Temperature (IR), in Celcius
+	public static final int SD_SENSOR_RGBC = 16;	// RGBC (Color) Properties: illuminance (lux), color temperature (K), (R,G,B) channels intensity
+	public static final int SD_SENSOR_PRECISION_GAS = 32;		// Gas value ppm(CO)
+	public static final int SD_SENSOR_REDUCING_GAS = 64;		// Reducing gas value (Ohm) 
+	public static final int SD_SENSOR_OXIDIZING_GAS = 128;	// Oxidixing gas value (Ohm)
+	public static final int SD_SENSOR_CAPACITANCE = 256;	// Proximity capacitance (fF)
+	public static final int SD_SENSOR_ALTITUDE = 512;		// Altitude (m)
 	
 	// Sensor Status: sensor combinations
 	//public static final int STATUS_SENSOR_GWB = 7;

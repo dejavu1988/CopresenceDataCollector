@@ -1,5 +1,8 @@
 package org.sesy.coco.datacollector;
 
+import java.util.Collections;
+import java.util.Comparator;
+
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -29,16 +32,28 @@ public class SensordroneWorker extends Service {
 	private int streamingRate = 1000;
 	
 	// An int[] that will hold the QS_TYPEs for our sensors of interest
-	private int[] qsSensors;
+	private static final int[] qsSensors = new int[] { DaemonService.myDrone.QS_TYPE_TEMPERATURE,
+		DaemonService.myDrone.QS_TYPE_HUMIDITY,
+		DaemonService.myDrone.QS_TYPE_PRESSURE,
+		DaemonService.myDrone.QS_TYPE_IR_TEMPERATURE,
+		DaemonService.myDrone.QS_TYPE_RGBC,
+		DaemonService.myDrone.QS_TYPE_PRECISION_GAS,
+		DaemonService.myDrone.QS_TYPE_REDUCING_GAS,
+		DaemonService.myDrone.QS_TYPE_OXIDIZING_GAS,
+		DaemonService.myDrone.QS_TYPE_CAPACITANCE,
+		DaemonService.myDrone.QS_TYPE_ALTITUDE };
 
-	// Text to display
+	// Sensors
 	private static final String[] SENSOR_NAMES = { "Temperature (Ambient)",
 			"Humidity", "Pressure", "Object Temperature (IR)",
 			"RGBC Properties", "Precision Gas", "Reducing Gas", "Oxidizing Gas",
 			"Proximity Capacitance", "Altitude" };
+	
+	private static boolean[] SENSOR_FLAGS = {false, false, false, false, false,
+		false, false, false, false, false};
 
 	// Figure out how many sensors we have based on the length of our labels
-	private int numberOfSensors = SENSOR_NAMES.length;
+	private static int numberOfSensors = SENSOR_NAMES.length;
 	
 	// Another object from the SDHelper library. It helps us set up our
 	// pseudo streaming
@@ -60,18 +75,7 @@ public class SensordroneWorker extends Service {
         ConfigureLog4J.configure(this);  
         LogManager.getRootLogger().setLevel((Level)Level.DEBUG);   
         //log.info("onCreate");		        
-                
-        qsSensors = new int[] { DaemonService.myDrone.QS_TYPE_TEMPERATURE,
-        		DaemonService.myDrone.QS_TYPE_HUMIDITY,
-        		DaemonService.myDrone.QS_TYPE_PRESSURE,
-        		DaemonService.myDrone.QS_TYPE_IR_TEMPERATURE,
-        		DaemonService.myDrone.QS_TYPE_RGBC,
-        		DaemonService.myDrone.QS_TYPE_PRECISION_GAS,
-        		DaemonService.myDrone.QS_TYPE_REDUCING_GAS,
-        		DaemonService.myDrone.QS_TYPE_OXIDIZING_GAS,
-        		DaemonService.myDrone.QS_TYPE_CAPACITANCE,
-				DaemonService.myDrone.QS_TYPE_ALTITUDE };
-        
+                        
         // This will Blink our Drone, once a second, Blue
         myBlinker = new DroneStreamer(DaemonService.myDrone, 1000) {
             @Override
@@ -85,13 +89,19 @@ public class SensordroneWorker extends Service {
             }
         };
         
-        for (int i = 0; i < numberOfSensors; i++) {
-        	final int counter = i;
-        	streamerArray[i] = new DroneQSStreamer(DaemonService.myDrone, qsSensors[i]);
+        log.info("SD sensor number:"+numberOfSensors);
+        for (int counter = 0; counter < numberOfSensors; counter++) {
+        	//final int counter = i;
+        	streamerArray[counter] = new DroneQSStreamer(DaemonService.myDrone, qsSensors[counter]);
         	// Enable our steamer
 			streamerArray[counter].enable();
+			
 			// Enable the sensor
-			DaemonService.myDrone.quickEnable(qsSensors[counter]);
+			if(DaemonService.myDrone.quickEnable(qsSensors[counter])){
+				log.info("SD sensor enabled:" + SENSOR_NAMES[counter]);
+			}else{
+				DaemonService.myDrone.quickEnable(qsSensors[counter]);
+			};
         }
         
         /*
@@ -109,9 +119,11 @@ public class SensordroneWorker extends Service {
 			@Override
 			public void altitudeStatus(DroneEventObject arg0) {
 				// TODO Auto-generated method stub
-				if (DaemonService.myDrone.altitudeStatus) {
+				/*if (DaemonService.myDrone.altitudeStatus) {
+					log.info("SD altitude ok");
 					streamerArray[9].run();
-				}
+				}*/
+				runOnAltiStatus();
 			}
 
 			@Override
@@ -123,9 +135,11 @@ public class SensordroneWorker extends Service {
 			@Override
 			public void capacitanceStatus(DroneEventObject arg0) {
 				// TODO Auto-generated method stub
-				if (DaemonService.myDrone.capacitanceStatus) {
+				/*if (DaemonService.myDrone.capacitanceStatus) {
+					log.info("SD cap ok");
 					streamerArray[8].run();
-				}
+				}*/
+				runOnCapStatus();
 			}
 
 			@Override
@@ -143,17 +157,21 @@ public class SensordroneWorker extends Service {
 			@Override
 			public void humidityStatus(DroneEventObject arg0) {
 				// TODO Auto-generated method stub
-				if (DaemonService.myDrone.humidityStatus) {
+				/*if (DaemonService.myDrone.humidityStatus) {
+					log.info("SD humidity ok");
 					streamerArray[1].run();
-				}
+				}*/
+				runOnHumidityStatus();
 			}
 
 			@Override
 			public void irStatus(DroneEventObject arg0) {
 				// TODO Auto-generated method stub
-				if (DaemonService.myDrone.irTemperatureStatus) {
+				/*if (DaemonService.myDrone.irTemperatureStatus) {
+					log.info("SD irTemp ok");
 					streamerArray[3].run();
-				}
+				}*/
+				runOnIrTempStatus();
 			}
 
 			@Override
@@ -165,49 +183,61 @@ public class SensordroneWorker extends Service {
 			@Override
 			public void oxidizingGasStatus(DroneEventObject arg0) {
 				// TODO Auto-generated method stub
-				if (DaemonService.myDrone.oxidizingGasStatus) {
+				/*if (DaemonService.myDrone.oxidizingGasStatus) {
+					log.info("SD oGas ok");
 					streamerArray[7].run();
-				}
+				}*/
+				runOnOgasStatus();
 			}
 
 			@Override
 			public void precisionGasStatus(DroneEventObject arg0) {
 				// TODO Auto-generated method stub
-				if (DaemonService.myDrone.precisionGasStatus) {
+				/*if (DaemonService.myDrone.precisionGasStatus) {
+					log.info("SD pGas ok");
 					streamerArray[5].run();
-				}
+				}*/
+				runOnPgasStatus();
 			}
 
 			@Override
 			public void pressureStatus(DroneEventObject arg0) {
 				// TODO Auto-generated method stub
-				if (DaemonService.myDrone.pressureStatus) {
+				/*if (DaemonService.myDrone.pressureStatus) {
+					log.info("SD pressure ok");
 					streamerArray[2].run();
-				}
+				}*/
+				runOnPressStatus();
 			}
 
 			@Override
 			public void reducingGasStatus(DroneEventObject arg0) {
 				// TODO Auto-generated method stub
-				if (DaemonService.myDrone.reducingGasStatus) {
+				/*if (DaemonService.myDrone.reducingGasStatus) {
+					log.info("SD rGas ok");
 					streamerArray[6].run();
-				}
+				}*/
+				runOnRgasStatus();
 			}
 
 			@Override
 			public void rgbcStatus(DroneEventObject arg0) {
 				// TODO Auto-generated method stub
-				if (DaemonService.myDrone.rgbcStatus) {
+				/*if (DaemonService.myDrone.rgbcStatus) {
+					log.info("SD rgbc ok");
 					streamerArray[4].run();
-				}
+				}*/
+				runOnRgbcStatus();
 			}
 
 			@Override
 			public void temperatureStatus(DroneEventObject arg0) {
 				// TODO Auto-generated method stub
-				if (DaemonService.myDrone.temperatureStatus) {
+				/*if (DaemonService.myDrone.temperatureStatus) {
+					log.info("SD temp ok");
 					streamerArray[0].run();
-				}
+				}*/
+				runOnTempStatus();
 			}
 
 			@Override
@@ -399,7 +429,7 @@ public class SensordroneWorker extends Service {
 		//ob = intent.getIntExtra("ob", 0);
 		
 		WorkerService.sdList.clear();
-		
+		clearFlags();
 		log.info("Subtask SD");
 		
 		timer = new CountDownTimer(32*1000, 1000) {
@@ -413,7 +443,18 @@ public class SensordroneWorker extends Service {
 				
 				DaemonService.myDrone.unregisterDroneListener(deListener);
 				DaemonService.myDrone.unregisterDroneListener(dsListener);
-				log.info("SD scan finished");
+				log.info("SD scan finished:" + WorkerService.sdList.size());
+				
+				Collections.sort(WorkerService.sdList, new Comparator(){
+
+					@Override
+					public int compare(Object obj1, Object obj2) {
+						Entry eobj1 = (Entry) obj1;
+						Entry eobj2 = (Entry) obj2;
+						return (eobj1.getMT() < eobj2.getMT())?-1: (eobj1.getMT() > eobj2.getMT()?1:(eobj1.getTS() < eobj2.getTS()?-1:(eobj1.getTS() > eobj2.getTS()?1:0)));
+					}
+					
+				});
 				WorkerService.sensordroneTaskDone = true;
 				stopSelf();
 			}
@@ -427,6 +468,18 @@ public class SensordroneWorker extends Service {
 		
 		DaemonService.myDrone.registerDroneListener(deListener);
 		DaemonService.myDrone.registerDroneListener(dsListener);
+		
+		runOnTempStatus();
+		runOnHumidityStatus();
+		runOnPressStatus();
+		runOnIrTempStatus();
+		runOnRgbcStatus();
+		runOnPgasStatus();
+		runOnRgasStatus();
+		runOnOgasStatus();
+		runOnCapStatus();
+		runOnAltiStatus();
+		
 		timer.start();
 		// Turn on our blinker
 		myBlinker.start();
@@ -440,6 +493,92 @@ public class SensordroneWorker extends Service {
 	public IBinder onBind(Intent intent) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	private synchronized void runOnTempStatus(){
+		if (!SENSOR_FLAGS[0] && DaemonService.myDrone.temperatureStatus) {
+			log.info("SD temp ok");
+			SENSOR_FLAGS[0] = true;
+			streamerArray[0].run();			
+		}
+	}
+	
+	private synchronized void runOnHumidityStatus(){
+		if (!SENSOR_FLAGS[1] && DaemonService.myDrone.humidityStatus) {
+			log.info("SD humidity ok");
+			SENSOR_FLAGS[1] = true;
+			streamerArray[1].run();
+		}
+	}
+	
+	private synchronized void runOnPressStatus(){
+		if (!SENSOR_FLAGS[2] && DaemonService.myDrone.pressureStatus) {
+			log.info("SD pressure ok");
+			SENSOR_FLAGS[2] = true;
+			streamerArray[2].run();
+		}
+	}
+
+	private synchronized void runOnIrTempStatus(){
+		if (!SENSOR_FLAGS[3] && DaemonService.myDrone.irTemperatureStatus) {
+			log.info("SD irTemp ok");
+			SENSOR_FLAGS[3] = true;
+			streamerArray[3].run();
+		}
+	}
+	
+	private synchronized void runOnRgbcStatus(){
+		if (!SENSOR_FLAGS[4] && DaemonService.myDrone.rgbcStatus) {
+			log.info("SD rgbc ok");
+			SENSOR_FLAGS[4] = true;
+			streamerArray[4].run();
+		}
+	}
+	
+	private synchronized void runOnPgasStatus(){
+		if (!SENSOR_FLAGS[5] && DaemonService.myDrone.precisionGasStatus) {
+			log.info("SD pGas ok");
+			SENSOR_FLAGS[5] = true;
+			streamerArray[5].run();
+		}
+	}
+	
+	private synchronized void runOnRgasStatus(){
+		if (!SENSOR_FLAGS[6] && DaemonService.myDrone.reducingGasStatus) {
+			log.info("SD rGas ok");
+			SENSOR_FLAGS[6] = true;
+			streamerArray[6].run();
+		}
+	}
+	
+	private synchronized void runOnOgasStatus(){
+		if (!SENSOR_FLAGS[7] && DaemonService.myDrone.oxidizingGasStatus) {
+			log.info("SD oGas ok");
+			SENSOR_FLAGS[7] = true;
+			streamerArray[7].run();
+		}
+	}
+	
+	private synchronized void runOnCapStatus(){
+		if (!SENSOR_FLAGS[8] && DaemonService.myDrone.capacitanceStatus) {
+			log.info("SD cap ok");
+			SENSOR_FLAGS[8] = true;
+			streamerArray[8].run();
+		}
+	}
+	
+	private synchronized void runOnAltiStatus(){
+		if (!SENSOR_FLAGS[9] && DaemonService.myDrone.altitudeStatus) {
+			log.info("SD altitude ok");
+			SENSOR_FLAGS[9] = true;
+			streamerArray[9].run();
+		}
+	}
+	
+	private synchronized void clearFlags(){
+		for(int i=0; i<numberOfSensors; i++){
+			SENSOR_FLAGS[i] = false;
+		}
 	}
 
 }

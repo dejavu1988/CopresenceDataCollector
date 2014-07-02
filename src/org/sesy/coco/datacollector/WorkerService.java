@@ -444,6 +444,7 @@ public class WorkerService extends Service{
 	        	result = e.getTS() +";" + e.getMT() +";" + e.getFP() +"\n";
 	        	out.write(result);
 	        }	
+	        log.info("SDList:"+sdList.size());
 	        for(Entry e: sdList){
 	        	result = e.getTS() +";SD" + e.getMT() +";" + e.getFP() +"\n";
 	        	out.write(result);
