@@ -27,6 +27,7 @@ This README would normally document whatever steps are necessary to get your ser
 
 ### How do I use it? ###
 * CopresenceDataCollector usage: [public wiki](https://wiki.helsinki.fi/display/SecSys/ColocationDataCollector)
+* Data Specification: `data_spec.md`
 
 ### Who do I talk to? ###
 
