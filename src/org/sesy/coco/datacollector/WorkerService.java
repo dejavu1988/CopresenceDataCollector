@@ -193,13 +193,45 @@ public class WorkerService extends Service{
         flag = flag & mt;
         if(flag != 0){	//allowed only when at least one sensor enabled
         	//detach subtasks for modalities
-        	metaTS = SystemClock.elapsedRealtime() - DaemonService.avgRTT/2;
+        	long anchorTS = SystemClock.elapsedRealtime();
+        	metaTS = anchorTS - DaemonService.avgRTT/2;
         	
         	if((flag & Constants.STATUS_SENSORDRONE) != 0){
-            	log.info("Sensordrone sensors task scheduled");
+        		metaTS += 2000;
+        		if(!DaemonService.myDrone.isConnected){
+        			if(pM.getSensordroneMAC() != ""){
+						DaemonService.myDrone.btConnect(pM.getSensordroneMAC());
+					}else{
+						//Toast.makeText(getApplicationContext(), "Last MAC not found... Please connect once", Toast.LENGTH_SHORT).show();
+					}
+        		}
+        		long tmpTS = SystemClock.elapsedRealtime();
+        		if(tmpTS < anchorTS + 2000){
+        			/*try {
+						Thread.sleep(2000 + anchorTS - tmpTS);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}*/
+        			Runnable r = new Runnable(){
+
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							log.info("Sensordrone sensors task scheduled");
+			            	sensordroneTask = true;
+			                //sdIntent.putExtra("flag", flag);
+			            	startService(sdIntent);
+						}
+        				
+        			};
+        			Handler h = new Handler();
+        			h.postDelayed(r, 2000 + anchorTS - tmpTS);
+        		}
+            	/*log.info("Sensordrone sensors task scheduled");
             	sensordroneTask = true;
                 //sdIntent.putExtra("flag", flag);
-            	startService(sdIntent);
+            	startService(sdIntent);*/
     		}
         	
         	if((flag & Constants.STATUS_SENSOR_MLTHB) != 0){

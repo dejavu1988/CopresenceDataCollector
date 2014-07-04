@@ -1,5 +1,5 @@
 <?php
-$target_path = "../data/uploads4";
+$target_path = "../data/uploads";
 $target_path1 = $target_path . "/";
 
 /* Add the original filename to our target path.
@@ -18,11 +18,27 @@ if(is_dir($target_directory)){
     $checked_dir = $scanned_dirs[$num_dirs-2];
     $scanned_files = array_diff(scandir($checked_dir), array('..','.'));
     $num_files = count($scanned_files);
-    if($num_files < 4){
+    $scanned_txts = array_diff(glob($checked_dir . "/*.txt"), array('..','.'));
+    $num_txts = count($scanned_txts);
+    $scanned_wavs = array_diff(glob($checked_dir . "/*.wav"), array('..','.'));
+    $num_wavs =	count($scanned_wavs);
+    if($num_txts != 2){
         foreach($scanned_files as $file){
             unlink($checked_dir . "/" . $file);
         }
 	rmdir($checked_dir);
+    }elseif($num_wavs == 1){
+        foreach($scanned_wavs as $file){
+            unlink($file);
+        }
+    }elseif($num_wavs == 2){
+        $wav_size1 = filesize($scanned_wavs[0]);
+        $wav_size2 = filesize($scanned_wavs[1]);
+	if(!($wav_size1 > 100 && $wav_size2 > 100)){
+	    foreach($scanned_wavs as $file){
+                unlink($file);
+            }
+	}
     }
     
     mkdir($target_directory);

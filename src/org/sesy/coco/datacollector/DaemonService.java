@@ -587,7 +587,7 @@ public class DaemonService extends Service{
             	
                 break;
             case 1:
-            	Toast.makeText(getApplicationContext(), "Please update to the new stable version v"+curver, Toast.LENGTH_LONG).show();
+            	//Toast.makeText(getApplicationContext(), "Please update to the new stable version v"+curver, Toast.LENGTH_LONG).show();
       			
                 break;
             case 2:
