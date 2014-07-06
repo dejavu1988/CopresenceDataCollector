@@ -394,7 +394,7 @@ public abstract class StandOutWindow extends Service {
 			if (ACTION_SHOW.equals(action) || ACTION_RESTORE.equals(action)) {
 				show(id);
 			} else if (ACTION_MAIN_VIEW.equals(action)) {
-				startActivity(new Intent("org.colocation.datacollector.MY_MAIN_VIEW_ACTION").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+				startActivity(new Intent("org.sesy.coco.datacollector.MY_MAIN_VIEW_ACTION").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 			} else if (ACTION_HIDE.equals(action)) {
 				hide(id);
 			} else if (ACTION_CLOSE.equals(action)) {
